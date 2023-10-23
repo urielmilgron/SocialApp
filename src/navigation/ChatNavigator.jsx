@@ -5,7 +5,11 @@ const Stack = createNativeStackNavigator()
 
 export default function ChatNavigator() {
   return (
-   <Stack.Navigator>
+   <Stack.Navigator
+   initialRouteName="Chat"
+   screenOptions={({}) => ({
+     headerTitleAlign: "center",
+   })}>
     <Stack.Screen
     name="Chat"
     component={Chat}

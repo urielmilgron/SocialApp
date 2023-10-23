@@ -1,17 +1,17 @@
 import { View, Text, FlatList } from 'react-native'
 import React from 'react'
 import styles from './Home.style'
-import posts from '../../data/posts'
+import data from '../../data/posts'
 import PublicationItem from './components/PublicationItem'
 
 const Home = () => {
   return (
     <View style={styles.container}>
       <FlatList
-      data={posts}
-      keyExtractor={(post) => post}
+      data={data}
+      keyExtractor={(post) => post.id}
       renderItem={({item}) => (
-        <PublicationItem item={item}/>
+        <PublicationItem publication={item}/>
       )}
       />
     </View>

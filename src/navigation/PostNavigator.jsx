@@ -6,7 +6,11 @@ const Stack = createNativeStackNavigator()
 
 export default function PostNavigator() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+    initialRouteName="Home"
+    screenOptions={({}) => ({
+      headerTitleAlign: "center",
+    })}>
       <Stack.Screen name="Home" component={Home}/>
     </Stack.Navigator>
   )
