@@ -45,7 +45,7 @@ export default styles = StyleSheet.create({
     },
     button:{
         width:'50%',
-        height:40,
+        height:35,
         justifyContent:'center',
         borderTopWidth:1,
     },
