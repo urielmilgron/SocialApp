@@ -59,4 +59,14 @@ export default [
     likes:null,
     createdTime:"2 days"
   },
+  {
+    id: 7,
+    userid: 20,
+    user: "Franco Spaice",
+    image: null,
+    content: "Este es mi primer post!",
+    comments:{},
+    likes:null,
+    createdTime:"2 days"
+  },
 ];
