@@ -4,7 +4,7 @@ export default styles = StyleSheet.create({
     container:{
         flex:1,
         width:'90%',
-        height:120,
+        height:140,
         alignSelf:'center',
         marginTop:10,
         marginBottom:10,
@@ -16,7 +16,7 @@ export default styles = StyleSheet.create({
         justifyContent:'start',
         flexDirection:'row',
         borderBottomWidth:1, 
-        backgroundColor:'#F0DDCE'
+        backgroundColor:'#88ACEB'
     },
     userNamePost:{
         marginLeft:5,
@@ -26,7 +26,7 @@ export default styles = StyleSheet.create({
         marginLeft:10,
         textAlignVertical:'center',
         fontSize:12,
-        color:'#817D96'
+        color:'#EBD6AB'
     },
     contentPostContainer:{
         minHeight:40,
@@ -55,4 +55,17 @@ export default styles = StyleSheet.create({
     buttonDivisor:{
         borderLeftWidth:1
     },
+    likesAndCommentsContainer:{
+        flexDirection:'row',
+        justifyContent:'space-around',
+        marginBottom:2,
+    },
+    likesTextButton:{
+        width:'50%',
+        alignItems:'center'
+    },
+    likesText:{
+        color:'#A294EB',
+        fontWeight:"400",
+    }
 })

@@ -9,7 +9,7 @@ export default styles = StyleSheet.create({
         marginTop:'10%',
         justifyContent:'space-evenly',
         alignItems:'center',
-        height:280,
+        height:350,
         width:'80%',
         alignSelf:'center',
         borderColor:'black',

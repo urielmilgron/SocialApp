@@ -7,7 +7,7 @@ export default [
     content: "Este es mi primer post!",
     comments:{},
     likes:null,
-    createdTime:"2 days"
+    createdTime:"2 días"
   },
   {
     id: 2,
@@ -15,9 +15,9 @@ export default [
     user: "Maria Romina",
     image: null,
     content: "Este es mi primer post!",
-    comments:{},
-    likes:null,
-    createdTime:"2 days"
+    comments:[{userid:13, comment:"Wow, que bueno que te sumaste!"},{userid:14, comment:"Ya era hora!"}],
+    likes:3,
+    createdTime:"2 días"
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ export default [
     content: "haha i dont understand this app but I was able to publish!",
     comments:{},
     likes:null,
-    createdTime:"2 days"
+    createdTime:"1 día"
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ export default [
     content: "Que es esto",
     comments:{},
     likes:null,
-    createdTime:"2 days"
+    createdTime:"2 días"
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ export default [
     content: "Que buena app y mi perfil es falso",
     comments:{},
     likes:null,
-    createdTime:"2 days"
+    createdTime:"2 días"
   },
   {
     id: 6,
@@ -57,7 +57,7 @@ export default [
     content: "Este es mi primer post!",
     comments:{},
     likes:null,
-    createdTime:"2 days"
+    createdTime:"2 días"
   },
   {
     id: 7,
@@ -67,6 +67,6 @@ export default [
     content: "Este es mi primer post!",
     comments:{},
     likes:null,
-    createdTime:"2 days"
+    createdTime:"2 días"
   },
 ];

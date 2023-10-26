@@ -4,7 +4,8 @@ const initialState = {
     user:null,
     token:null,
     localId:null,
-    imageProfile:null
+    imageProfile:null,
+    name:null
 }
 
 export const authSlice = createSlice({
@@ -15,7 +16,7 @@ export const authSlice = createSlice({
             return{
                 user:action.payload.data.email,
                 token:action.payload.data.idToken,
-                localId:action.payload.data.localId
+                localId:action.payload.data.localId,
             }
         },
         clearUser: () => {
@@ -28,6 +29,12 @@ export const authSlice = createSlice({
             return{
                 ...state,
                 imageProfile:action.payload
+            }
+        },
+        setUserName:(state,action) => {
+            return{
+                ...state,
+                name:action.payload
             }
         }
     }
