@@ -18,7 +18,7 @@ const MainNavigator = () => {
     }
   },[data])
 
-  return user? <BottomTabNavigator/> : <AuthStackNavigator/> 
+  return localId? <BottomTabNavigator/> : <AuthStackNavigator/> 
 };
 
 export default MainNavigator;

@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseUrl } from "../firebase";
 
 export const userApi = createApi({
@@ -6,36 +6,36 @@ export const userApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
     getProfileImage: builder.query({
-      query: (localId) => `profileImages/${localId}.json`,
+      query: (localId) =>`profileImages/${localId}.json`,
     }),
     postProfileImage: builder.mutation({
       query: ({ image, localId }) => ({
-        url: `profileImages/${localId}.json`,
-        method: "PUT",
+        url:`profileImages/${localId}.json`,
+        method: 'PUT',
         body: {
           image: image,
         },
       }),
     }),
     getProfileName: builder.query({
-      query: localId => `profileNames/${localId}.json`,
+      query: (localId) => `profileNames/${localId}.json`,
     }),
     postProfileName: builder.mutation({
       query: ({ userName, localId }) => ({
-        url: `profileNames/${localId}.json`,
-        method: "PUT",
+        url:`profileNames/${localId}.json`,
+        method: 'PUT',
         body: {
-          userName: userName,
+          userName
         },
       }),
     }),
     postPublication: builder.mutation({
-        query:({...post}) => ({
-        url:'posts.json',
-        method:'POST',
-        body:post
-        })
-    })
+      query: ({ ...post }) => ({
+        url: "posts.json",
+        method: 'POST',
+        body: post,
+      }),
+    }),
   }),
 });
 
