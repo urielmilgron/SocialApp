@@ -2,12 +2,13 @@ import { View, Text, TouchableHighlight, Pressable } from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "./PublicationItem.style";
 import { Ionicons } from "@expo/vector-icons";
-import { useGetProfileNameQuery } from "../../../services/userApi";
+import { useGetProfileNameQuery, useUpdateLikeMutation } from "../../../services/userApi";
 
 const PublicationItem = ({ navigation, publication }) => {
   const [like, setLike] = useState("Me gusta");
   const [likes, setLikes] = useState(publication.likes);
   const {data, isLoading} = useGetProfileNameQuery(publication.localId)
+  const {triggerLike, result } = useUpdateLikeMutation()
   const onPress = () => {
     if (like == "Me gusta") {
       setLike(<Ionicons name="thumbs-up-sharp" size={20} color="#A294EB" />);

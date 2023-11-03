@@ -30,15 +30,22 @@ export const userApi = createApi({
       }),
     }),
     postPublication: builder.mutation({
-      query: ({...post}) => ({
-        url: `posts.json`,
-        method: "POST",
-        body:post,
+      query: (post) => ({
+        url: `posts/${post.id}.json`,
+        method: "PUT",
+        body: post,
       }),
     }),
     getPublications: builder.query({
-      query: () => `posts.json`
-    })
+      query: () => `posts.json`,
+    }),
+    updateLike: builder.mutation({
+      query: ({ postId, like }) => ({
+        url: `posts/${postId}.json`,
+        method: "PATCH",
+        body: { likes: like },
+      }),
+    }),
   }),
 });
 
@@ -48,5 +55,6 @@ export const {
   useGetProfileNameQuery,
   usePostProfileNameMutation,
   usePostPublicationMutation,
-  useGetPublicationsQuery
+  useGetPublicationsQuery,
+  useUpdateLikeMutation,
 } = userApi;
