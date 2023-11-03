@@ -6,36 +6,39 @@ export const userApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
     getProfileImage: builder.query({
-      query: (localId) =>`profileImages/${localId}.json`,
+      query: (localId) => `profiles/${localId}/profileImage.json`,
     }),
     postProfileImage: builder.mutation({
       query: ({ image, localId }) => ({
-        url:`profileImages/${localId}.json`,
-        method: 'PUT',
+        url: `profiles/${localId}/profileImage.json`,
+        method: "PUT",
         body: {
           image: image,
         },
       }),
     }),
     getProfileName: builder.query({
-      query: (localId) => `profileNames/${localId}.json`,
+      query: (localId) => `profiles/${localId}.json`,
     }),
     postProfileName: builder.mutation({
       query: ({ userName, localId }) => ({
-        url:`profileNames/${localId}.json`,
-        method: 'PUT',
+        url: `profiles/${localId}.json`,
+        method: "PUT",
         body: {
-          userName
+          userName,
         },
       }),
     }),
     postPublication: builder.mutation({
-      query: ({ ...post }) => ({
-        url: "posts.json",
-        method: 'POST',
-        body: post,
+      query: ({...post}) => ({
+        url: `posts.json`,
+        method: "POST",
+        body:post,
       }),
     }),
+    getPublications: builder.query({
+      query: () => `posts.json`
+    })
   }),
 });
 
@@ -45,4 +48,5 @@ export const {
   useGetProfileNameQuery,
   usePostProfileNameMutation,
   usePostPublicationMutation,
+  useGetPublicationsQuery
 } = userApi;

@@ -1,5 +1,5 @@
 import { View, Text, TextInput, Pressable } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Login.style'
 import { useLoginMutation } from '../../services/authApi'
 import { useDispatch } from 'react-redux'
@@ -13,14 +13,17 @@ const Login = ({navigation}) => {
   const dispatch = useDispatch()
 
   const onSubmit = () => {
+    console.log(email, password)
     triggerLogin({
-      email,password
+      email, password
     })
+  }
+
+  useEffect(() => {
     if(result.isSuccess){
       dispatch(setUser(result))
-    }
-    console.log(result)
-  }
+    } 
+  },[result])
   return (
     <View style={styles.container}>
       <View style={styles.loginContainer}>

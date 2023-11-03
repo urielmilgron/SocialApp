@@ -1,24 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    updatedAt: Date.now().toLocaleString(),
-    posts:[],
-    messages:[],
-}
+  user: null,
+  updatedAt: Date.now().toLocaleString(),
+  posts: [],
+  totalPost: 0,
+};
 
 export const userSlice = createSlice({
-    name:"user",
-    initialState,
-    reducers:{
-        addPost: (state, action) => {
-            state.posts.push(action.payload)
-            state = {
-                ...state,
-                updatedAt: new Date().toLocaleString()            }
-        }
-    }
-})
+  name: "user",
+  initialState,
+  reducers: {
+    addPost: (state, action) => {
+      state.user = action.payload.user;
+      state.updatedAt = new Date().toLocaleString();
+      state.posts.push(action.payload.post);
+      state.totalPost += 1;
+    },
+  },
+});
 
-export const {addPost} = userSlice.actions
+export const { addPost } = userSlice.actions;
 
-export default userSlice.reducer
+export default userSlice.reducer;
