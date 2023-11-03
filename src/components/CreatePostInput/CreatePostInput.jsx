@@ -8,8 +8,8 @@ import {
 import React, { useEffect, useState } from "react";
 import styles from "./CreatePostInput.style";
 import { useDispatch, useSelector } from "react-redux";
-import { useGetProfileNameQuery, usePostPublicationMutation } from "../../services/userApi";
-import { addPost } from "../../features/user/userSlice";
+import { useGetProfileNameQuery, usePostPublicationMutation, useGetPublicationsQuery } from "../../services/userApi";
+import { setPosts } from "../../features/user/userSlice";
 import 'react-native-get-random-values'
 import {v4 as uuidv4} from 'uuid'
 
@@ -18,6 +18,7 @@ const CreatePostInput = () => {
   const { localId, userName } = useSelector((state) => state.auth);
   const { data, isError, isLoading, isSuccess } = useGetProfileNameQuery(localId);
   const [ triggerPost, resultPost ] = usePostPublicationMutation()
+  const { data: firebasePosts, isError:isErrorFiresbase, isLoading:isLoadingFirebase } = useGetPublicationsQuery();
   const dispatch = useDispatch()
   const postId = uuidv4()
   //Si presionamos cancel se borra el texto y se cierra el teclado
@@ -26,14 +27,11 @@ const CreatePostInput = () => {
     Keyboard.dismiss();
   };
   const onSubmit = () =>{
-    triggerPost({id:postId,text: value, comments:[], likes:0, createdAt: new Date().toLocaleString(), localId:localId})
-  }
-
-  useEffect(() => {
-    if(resultPost.isSuccess){
-      console.log(resultPost)
+    if(value){
+      triggerPost({id:postId,text: value, comments:{}, likes:{}, createdAt: new Date().toLocaleString(), localId:localId})
+      onPressCancel()
     }
-  },[resultPost])
+  }
   return isLoading ? <Text>Está cargando</Text>:(
     <View style={styles.container}>
       <View style={styles.textInputContainer}>

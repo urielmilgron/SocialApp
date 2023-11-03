@@ -3,23 +3,24 @@ import React, { useEffect, useState } from "react";
 import styles from "./PublicationItem.style";
 import { Ionicons } from "@expo/vector-icons";
 import { useGetProfileNameQuery, useUpdateLikeMutation } from "../../../services/userApi";
+import { useSelector } from "react-redux";
 
 const PublicationItem = ({ navigation, publication }) => {
+  const { localId } = useSelector((state) => state.auth)
   const [like, setLike] = useState("Me gusta");
   const [likes, setLikes] = useState(publication.likes);
-  const {data, isLoading} = useGetProfileNameQuery(publication.localId)
-  const {triggerLike, result } = useUpdateLikeMutation()
+  const {data, isLoading, isSuccess} = useGetProfileNameQuery(publication.localId)
+  const [triggerLike, result ] = useUpdateLikeMutation()
   const onPress = () => {
     if (like == "Me gusta") {
       setLike(<Ionicons name="thumbs-up-sharp" size={20} color="#A294EB" />);
-      setLikes(likes+1)
+      triggerLike(publication.id, localId)
     } else {
       setLike("Me gusta");
       setLikes(likes-1)
     }
   };
-  console.log(publication)
-  return (
+  return isSuccess && data && data.userName ? (
     <View style={styles.container}>
       <View style={styles.userNamePostContainer}>
         <Text style={styles.userNamePost}>{!isLoading && data.userName}</Text>
@@ -29,7 +30,7 @@ const PublicationItem = ({ navigation, publication }) => {
         <Text style={styles.contentPost}>{publication.text}</Text>
       </View>
       <View style={styles.likesAndCommentsContainer}>
-        <Pressable style={styles.likesTextButton}><Text style={styles.likesText}>{publication.likes? `${publication.likes} likes` : ''}</Text></Pressable>
+        <Pressable style={styles.likesTextButton}><Text style={styles.likesText}>{publication.likes? `${publication.likes.length} likes` : ''}</Text></Pressable>
         {/* <Pressable style={styles.likesTextButton}><Text style={styles.likesText}>{publication.comments.length? `${publication.comments.length} comentarios` : ''}</Text></Pressable> */}
       </View>
       <View style={styles.bottonsContainer}>
@@ -42,7 +43,7 @@ const PublicationItem = ({ navigation, publication }) => {
       </View>
     </View>
  
-  );
+  ) : <Text>Cargando...</Text>;
 };
 
 export default PublicationItem;

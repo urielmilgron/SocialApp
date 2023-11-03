@@ -40,10 +40,10 @@ export const userApi = createApi({
       query: () => `posts.json`,
     }),
     updateLike: builder.mutation({
-      query: ({ postId, like }) => ({
+      query: ({ postId, userId }) => ({
         url: `posts/${postId}.json`,
         method: "PATCH",
-        body: { likes: like },
+        body: { likes: userId },
       }),
     }),
   }),
