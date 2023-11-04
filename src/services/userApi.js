@@ -43,7 +43,7 @@ export const userApi = createApi({
       query: ({ postId, userId }) => ({
         url: `posts/${postId}.json`,
         method: "PATCH",
-        body: { likes: userId },
+        body: { likes: {userId}},
       }),
     }),
   }),
