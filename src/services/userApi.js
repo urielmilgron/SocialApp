@@ -4,6 +4,7 @@ import { baseUrl } from "../firebase";
 export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({ baseUrl }),
+  tagTypes: ['likes'],
   endpoints: (builder) => ({
     getProfileImage: builder.query({
       query: (localId) => `profiles/${localId}/profileImage.json`,
@@ -40,12 +41,48 @@ export const userApi = createApi({
       query: () => `posts.json`,
     }),
     updateLike: builder.mutation({
-      query: ({ postId, userId }) => ({
+      query: ({ postId, localId, ...post }) => ({
         url: `posts/${postId}.json`,
         method: "PATCH",
-        body: { likes: {userId}},
+        body: {
+          likes: {
+            ...(post.likes || {}),
+            [localId]: post.likes && localId in post.likes ? "que onda" : true,
+          },
+        },
       }),
+      invalidatesTags: ['likes'],
+      onError: (error) => {
+        console.error("Error al actualizar el like:", error);
+      },
     }),
+
+    addLike: builder.mutation({
+      query: ({ postId, localId, ...post }) => ({
+        url: `posts/${postId}/likes.json`,
+        method: "PUT",
+        body: {[localId]:true},
+      }),
+      invalidatesTags: ['likes'],
+      onError: (error) => {
+        console.error("Error al actualizar el like:", error);
+      },
+    }),
+
+    deleteLike: builder.mutation({
+      query: ({ postId, localId, ...post }) => ({
+        url: `posts/${postId}/likes.json`,
+        method: "PUT",
+        body: {[localId]:null},
+      }),
+      invalidatesTags: ['likes'],
+      onError: (error) => {
+        console.error("Error al actualizar el like:", error);
+      },
+    }),
+
+
+    
   }),
 });
 
@@ -57,4 +94,6 @@ export const {
   usePostPublicationMutation,
   useGetPublicationsQuery,
   useUpdateLikeMutation,
+  useAddLikeMutation,
+  useDeleteLikeMutation
 } = userApi;

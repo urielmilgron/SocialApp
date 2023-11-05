@@ -28,7 +28,7 @@ const CreatePostInput = () => {
   };
   const onSubmit = () =>{
     if(value){
-      triggerPost({id:postId,text: value, comments:{}, likes:{}, createdAt: new Date().toLocaleString(), localId:localId})
+      triggerPost({id:postId,text: value, comments:null, likes:null, createdAt: new Date().toLocaleString(), localId:localId})
       onPressCancel()
     }
   }

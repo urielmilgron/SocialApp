@@ -22,9 +22,12 @@ const Home = ({ navigation }) => {
   //los muestra y al cargarse la data de la db tambien
   useEffect(() => {
     const unsubscribe = listeningPosts((newPosts) => {
-      //Filtro por fecha y despacho el array filtrado
-      const filterArray = filterByDate(newPosts);
-      dispatch(setPosts(filterArray));
+      //Filtro por fecha y despacho el array filtrado si hay posts
+      if(newPosts){
+        const filterArray = filterByDate(newPosts);
+        dispatch(setPosts(filterArray));
+      }
+      
     });
 
     return () => {
