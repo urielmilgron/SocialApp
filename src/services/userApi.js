@@ -13,9 +13,7 @@ export const userApi = createApi({
       query: ({ image, localId }) => ({
         url: `profiles/${localId}/profileImage.json`,
         method: "PUT",
-        body: {
-          image: image,
-        },
+        body: {image}
       }),
     }),
     getProfileName: builder.query({

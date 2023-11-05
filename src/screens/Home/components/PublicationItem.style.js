@@ -67,5 +67,12 @@ export default styles = StyleSheet.create({
     likesText:{
         color:'#A294EB',
         fontWeight:"400",
+    },
+    imageProfile: {
+        width:35,
+        height:35,
+        borderRadius:100,
+        alignSelf:'center',
+        marginLeft:5
     }
 })

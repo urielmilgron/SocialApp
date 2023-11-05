@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import styles from "./Signup.style";
 import { useSignUpMutation } from "../../services/authApi";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser, setUserName } from "../../features/auth/authSlice";
-import { usePostProfileNameMutation } from "../../services/userApi";
+import { setProfileImage, setUser, setUserName } from "../../features/auth/authSlice";
+import { usePostProfileImageMutation, usePostProfileNameMutation } from "../../services/userApi";
 
 const Signup = ({ navigation }) => {
   const userName = useSelector(state => state.auth.userName)
@@ -16,6 +16,7 @@ const Signup = ({ navigation }) => {
 
   const [triggerUserName, resultUser] = usePostProfileNameMutation();
   const [triggerSignUp, resultSignUp] = useSignUpMutation();
+  const [triggerImage, resultImage] = usePostProfileImageMutation()
   const dispatch = useDispatch();
 
   const onSubmit = () => {
@@ -28,7 +29,7 @@ const Signup = ({ navigation }) => {
 
   useEffect(() => {
     if (resultSignUp.isSuccess) {
-      dispatch(setUser(resultSignUp));
+      
       const localId = resultSignUp.data.localId
         triggerUserName({
           userName,
@@ -40,9 +41,23 @@ const Signup = ({ navigation }) => {
   useEffect(() => {
     console.log(resultUser);
     if (resultUser.isSuccess) {
-      console.log("Su cuenta se ha creado con exito!")
+      triggerImage({
+        image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80",
+        localId: resultSignUp.data.localId
+      })
+      
+      
     }
   }, [resultUser.isSuccess]);
+
+  useEffect(() => {
+    console.log(resultImage)
+    if(resultImage.isSuccess){
+      dispatch(setProfileImage("https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80"))
+      console.log("Su cuenta se ha creado con exito!")
+      dispatch(setUser(resultSignUp));
+    }
+  },[resultImage.isSuccess])
   
   return (
     <View style={styles.container}>

@@ -4,6 +4,7 @@ import {
   TouchableHighlight,
   Text,
   Keyboard,
+  ActivityIndicator
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "./CreatePostInput.style";
@@ -32,7 +33,7 @@ const CreatePostInput = () => {
       onPressCancel()
     }
   }
-  return isLoading ? <Text>Está cargando</Text>:(
+  return isLoading ? <ActivityIndicator size="large" color="#00ff00" style={{alignSelf:'center'}} />:(
     <View style={styles.container}>
       <View style={styles.textInputContainer}>
         <TextInput

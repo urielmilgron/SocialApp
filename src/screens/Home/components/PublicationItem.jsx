@@ -1,8 +1,8 @@
-import { View, Text, TouchableHighlight, Pressable } from "react-native";
+import { View, Text, TouchableHighlight, Pressable, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "./PublicationItem.style";
 import { Ionicons } from "@expo/vector-icons";
-import { useGetProfileNameQuery, useAddLikeMutation, useDeleteLikeMutation } from "../../../services/userApi";
+import { useGetProfileNameQuery, useAddLikeMutation, useDeleteLikeMutation, useGetProfileImageQuery } from "../../../services/userApi";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "../../../features/user/userSlice";
 import { listeningPosts } from "../../../firebase/firebaseListeners";
@@ -15,11 +15,13 @@ const PublicationItem = ({ navigation, publication }) => {
   const [deleteLike, resultDeletLike] = useDeleteLikeMutation();
   const dispatch = useDispatch();
   const [likes, setLikes] = useState(publication.likes || {});
+  const {data:dataImage, isLoading: isLoadingImage, isSuccess: isSuccessImage, isError: isErrorImage} = useGetProfileImageQuery(publication.localId)
 
-  // Escucha cambios en tiempo real usando el listener de Firebase directamente
+
+  // Escucha cambios en tiempo real usando el listener de Firebase directamente 
   useEffect(() => {
     const unsubscribe = listeningPosts((newPosts) => {
-      if (newPosts) {
+      if (newPosts && isSuccessImage && dataImage.image) {
         const filterArray = filterByDate(newPosts);
         dispatch(setPosts(filterArray));
       }
@@ -28,7 +30,7 @@ const PublicationItem = ({ navigation, publication }) => {
     return () => {
       unsubscribe();
     };
-  }, [resultAddLike, resultDeletLike]);
+  }, [resultAddLike, resultDeletLike, dataImage, isSuccessImage]);
 
   //Si localId está en likes, se lo elimina de la db y si no se agrega
   const onPress = async () => {
@@ -54,9 +56,14 @@ const PublicationItem = ({ navigation, publication }) => {
     console.log(isError);
   }
 
-  return isSuccess && data && data.userName ? (
+  return isSuccess && data && data.userName && (
     <View style={styles.container}>
       <View style={styles.userNamePostContainer}>
+        {dataImage && dataImage.image &&(<Image style={styles.imageProfile} source={
+          {
+            uri: dataImage.image
+          }
+        }/>)}
         <Text style={styles.userNamePost}>{!isLoading && data.userName}</Text>
         <Text style={styles.timePost}>{publication.createdAt}</Text>
       </View>
@@ -81,7 +88,7 @@ const PublicationItem = ({ navigation, publication }) => {
         </TouchableHighlight>
       </View>
     </View>
-  ) : <Text>Cargando...</Text>;
+  ) ;
 };
 
 export default PublicationItem;
