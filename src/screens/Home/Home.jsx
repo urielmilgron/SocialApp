@@ -1,5 +1,5 @@
-import { View, Text, FlatList } from "react-native";
-import React, { useEffect } from "react";
+import { View, Text, FlatList, ActivityIndicator } from "react-native";
+import React, { useEffect, useState } from "react";
 import styles from "./Home.style";
 import PublicationItem from "./components/PublicationItem";
 import { CreatePostInput } from "../../components/";
@@ -12,8 +12,9 @@ import { filterByDate } from "../../utilities/filterByDate";
 
 const Home = ({ navigation }) => {
   const dispatch = useDispatch();
-  const { data: firebasePosts, isError, isLoading } = useGetPublicationsQuery();
+  const { data: firebasePosts, isLoading } = useGetPublicationsQuery();
   const posts = useSelector((state) => state.user.posts);
+  const [loading, setLoading] = useState(false);
   const headerFlatList = () => {
     return <CreatePostInput />;
   };
@@ -21,13 +22,16 @@ const Home = ({ navigation }) => {
   //Escucho la db al despachar los posts de firebasePosts si es que hay cambios me
   //los muestra y al cargarse la data de la db tambien
   useEffect(() => {
+    if (isLoading) {
+      true;
+    }
     const unsubscribe = listeningPosts((newPosts) => {
       //Filtro por fecha y despacho el array filtrado si hay posts
-      if(newPosts){
+      if (newPosts) {
         const filterArray = filterByDate(newPosts);
         dispatch(setPosts(filterArray));
+        setLoading(false);
       }
-      
     });
 
     return () => {
@@ -37,9 +41,13 @@ const Home = ({ navigation }) => {
     };
   }, [dispatch, firebasePosts]);
 
-
-
-  return (
+  return loading ? (
+    <ActivityIndicator
+      size="large"
+      color="#00ff00"
+      style={{ alignSelf: "center" }}
+    />
+  ) : (
     <View style={styles.container}>
       <FlatList
         ListHeaderComponent={headerFlatList}

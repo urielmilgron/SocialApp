@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Pressable } from "react-native";
+import { View, Text, TextInput, Pressable, ActivityIndicator } from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "./Signup.style";
 import { useSignUpMutation } from "../../services/authApi";
@@ -20,6 +20,7 @@ const Signup = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const onSubmit = () => {
+    setLoading(true)
     triggerSignUp({
       email,
       password,
@@ -56,10 +57,11 @@ const Signup = ({ navigation }) => {
       dispatch(setProfileImage("https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80"))
       console.log("Su cuenta se ha creado con exito!")
       dispatch(setUser(resultSignUp));
+      setLoading(false)
     }
   },[resultImage.isSuccess])
   
-  return (
+  return loading? <ActivityIndicator size="small" color="#0000ff" /> : (
     <View style={styles.container}>
       <View style={styles.loginContainer}>
         <Text>Sign up to start</Text>

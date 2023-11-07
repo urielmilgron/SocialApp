@@ -14,17 +14,22 @@ export default styles = StyleSheet.create({
         justifyContent:'space-evenly',
     },
     imageContainer:{
-        width:120,
-        height:120,
-    
+        width:135,
+        height:135,
+        justifyContent:'space-between',
+
+    },
+    userNameText:{
+        alignSelf:'center'
     },
     image:{
-        width:'100%',
-        height:'100%',
+        width:'80%',
+        height:'80%',
         borderRadius:100,
         borderColor:'black',
         borderWidth:1,
         shadowColor:'blue',
+        alignSelf:'center'
     },
     button:{
         backgroundColor:colorsPallete.primaryColor,
