@@ -10,10 +10,8 @@ const Login = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [triggerLogin, result] = useLoginMutation();
   const dispatch = useDispatch();
-  let id;
 
   const onSubmit = () => {
-    console.log(email, password);
     triggerLogin({
       email,
       password,

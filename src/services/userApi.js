@@ -42,16 +42,15 @@ export const userApi = createApi({
       query: ({ postId, localId }) => ({
         url: `posts/${postId}/likes/${localId}.json`,
         method: "POST",
-        body: {like:true},
+        body: { like: true },
       }),
       invalidatesTags: ["likes"],
       onError: (error) => {
         console.error("Error al actualizar el like:", error);
       },
     }),
-
     deleteLike: builder.mutation({
-      query: ({ postId, localId}) => ({
+      query: ({ postId, localId }) => ({
         url: `posts/${postId}/likes/${localId}.json`,
         method: "DELETE",
       }),
@@ -60,6 +59,24 @@ export const userApi = createApi({
         console.error("Error al actualizar el like:", error);
       },
     }),
+    postComment: builder.mutation({
+      query: ({postId, post}) => ({
+        url:`posts/${postId}/comments/${post.id}.json`,
+        method:'POST',
+        body: post
+      })
+    })
+    ,
+    getMessages: builder.query({
+      query: () => `messages.json`
+    }),
+    postMessage: builder.mutation({
+      query: (message) => ({
+        url: `messages/${message.id}.json`,
+        method: "PUT",
+        body: message
+      })
+    })
   }),
 });
 
@@ -70,7 +87,9 @@ export const {
   usePostProfileNameMutation,
   usePostPublicationMutation,
   useGetPublicationsQuery,
-  useUpdateLikeMutation,
   useAddLikeMutation,
   useDeleteLikeMutation,
+  usePostCommentMutation,
+  useGetMessagesQuery,
+  usePostMessageMutation
 } = userApi;

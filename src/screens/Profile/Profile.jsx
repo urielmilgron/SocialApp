@@ -1,5 +1,5 @@
 import { View, Text, Image, Pressable } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./Profile.style";
 import * as ImagePicker from "expo-image-picker";
 import { clearUser, setProfileImage } from "../../features/auth/authSlice";
@@ -46,7 +46,6 @@ const Profile = () => {
 
   const confirmImage = () => {
     triggerSaveProfileImage({ image, localId });
-    console.log(result);
     if (result.isSuccess) {
       setimageState("La foto fue guardada con exito!");
     } else if (result.error || result.isUninitialized) {
@@ -60,7 +59,6 @@ const Profile = () => {
   const sesionOff = () => {
     dispatch(clearUser());
   };
-  console.log(userName)
   return (
     <View style={styles.container}>
       <View style={styles.imageAndButtons}>

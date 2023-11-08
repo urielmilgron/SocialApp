@@ -21,6 +21,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 //Conecto a los posts
 const connectPostsDb = ref(db, 'posts');
+const connectMsgDb = ref(db,'messages');
 
 //Escucho los posts a traves de la función unsubscribe
 const listeningPosts = (callback) => {
@@ -33,4 +34,15 @@ const listeningPosts = (callback) => {
     return unsubscribe;
   };
   
-  export { listeningPosts };
+  //Escucha los mensajes
+  const listeningMessages = (callback) => {
+    const messages = onValue(connectMsgDb, (snapshot) => {
+      const dataMsg = snapshot.val();
+      
+      callback(dataMsg)
+    })
+    return messages
+  }
+
+
+  export { listeningPosts, listeningMessages };

@@ -1,22 +1,46 @@
-import { View, TextInput, Image, Text, FlatList } from "react-native";
-import React from "react";
+import { View, ActivityIndicator, FlatList } from "react-native";
+import React, { useEffect, useState } from "react";
 import styles from "./Chat.style";
 import data from "../../data/messages";
 import MessageInput from './components/MessageInput/MessageInput'
 import MessageItem from "./components/MessageItem/MessageItem";
-
+import { useDispatch, useSelector } from "react-redux";
+import { useGetMessagesQuery } from "../../services/userApi";
+import { filterByDate } from "../../utilities/filterByDate";
+import { setMessages } from "../../features/user/userSlice";
+import { listeningMessages } from "../../firebase/firebaseListeners";
 const Chat = () => {
-  console.log(data);
+  const dispatch = useDispatch()
+  const {data: firebaseMsg, isLoading } = useGetMessagesQuery()
+  const messages = useSelector((state) => state.user.messages)
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    if(isLoading){
+      setLoading(true)
+    }
+    const unsubscribe = listeningMessages((newMsg) => {
+      if(newMsg){
+        const filterArray = filterByDate(newMsg)
+        dispatch(setMessages(filterArray))
+        setLoading(false)
+      }
+    })
+
+    return () => {
+      unsubscribe()
+    }
+  }, [dispatch, firebaseMsg])
 
 
-  return (
+  return  (
     <View style={styles.container}>
       <View style={styles.flatListContainer}>
-      <FlatList
-        data={data}
+      {loading ? <></>:(<FlatList
+        data={messages}
         keyExtractor={(message) => message.id}
         renderItem={({ item }) => <MessageItem message={item} />}
-      />
+      />)}
       </View>
       <View style={styles.messageInputContainer}><MessageInput/></View>
     </View>
