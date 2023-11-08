@@ -21,7 +21,7 @@ const Chat = () => {
     }
     const unsubscribe = listeningMessages((newMsg) => {
       if(newMsg){
-        const filterArray = filterByDate(newMsg)
+        const filterArray = filterByDate(newMsg, "message")
         dispatch(setMessages(filterArray))
         setLoading(false)
       }
@@ -40,6 +40,7 @@ const Chat = () => {
         data={messages}
         keyExtractor={(message) => message.id}
         renderItem={({ item }) => <MessageItem message={item} />}
+        inverted
       />)}
       </View>
       <View style={styles.messageInputContainer}><MessageInput/></View>

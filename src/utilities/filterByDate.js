@@ -1,4 +1,4 @@
-export const filterByDate = (postsObject) => {
+export const filterByDate = (postsObject, type) => {
   if(postsObject){
     const postsFiltered = Object.values(postsObject);
 
@@ -26,7 +26,8 @@ export const filterByDate = (postsObject) => {
         partsB[5]
       );
       //Se ordenan de manera ascendente
-      return dateB - dateA;
+
+        return dateB - dateA;
     });
     return postsFiltered
   }

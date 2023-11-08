@@ -42,7 +42,7 @@ const CreatePostInput = () => {
       triggerPost({
         id: postId,
         text: value,
-        createdAt: new Date().toLocaleString(),
+        createdAt: new Date().toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires', hour12: false }),
         localId: localId,
       });
       onPressCancel();

@@ -14,7 +14,7 @@ import { listeningPosts } from "../../../firebase/firebaseListeners";
 import { filterByDate } from "../../../utilities/filterByDate";
 
 const PublicationItem = ({ navigation, publication }) => {
-  const { localId } = useSelector((state) => state.auth);
+  const { localId, userName } = useSelector((state) => state.auth);
   const { data, isLoading, isSuccess, isError } = useGetProfileNameQuery(
     publication.localId
   );
@@ -75,7 +75,7 @@ const PublicationItem = ({ navigation, publication }) => {
               }}
             />
           )}
-          <Text style={styles.userNamePost}>{!isLoading && data.userName}</Text>
+          <Text style={styles.userNamePost}>{!isLoading && data.userName === userName? "Tú" : data.userName}</Text>
           <Text style={styles.timePost}>{publication.createdAt}</Text>
         </View>
         <View style={styles.contentPostContainer}>

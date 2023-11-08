@@ -4,7 +4,7 @@ export default styles = StyleSheet.create({
   container: {
     flex: 1,
     width: "90%",
-    height: 140,
+    maxHeight:300,
     alignSelf: "center",
     marginTop: 10,
     marginBottom: 10,
@@ -12,11 +12,12 @@ export default styles = StyleSheet.create({
     borderWidth: 1,
   },
   userNamePostContainer: {
-    height: "30%",
+    height: 45,
     justifyContent: "start",
     flexDirection: "row",
     borderBottomWidth: 1,
     backgroundColor: "#88ACEB",
+
   },
   userNamePost: {
     marginLeft: 5,
@@ -30,7 +31,7 @@ export default styles = StyleSheet.create({
   },
   contentPostContainer: {
     minHeight: 40,
-    maxHeight: 60,
+    maxHeight:180,
     width: "96.5%",
     alignSelf: "center",
     paddingTop: 2,
@@ -42,6 +43,9 @@ export default styles = StyleSheet.create({
   },
   bottonsContainer: {
     flexDirection: "row",
+  },
+  text:{
+    flexWrap:'wrap'
   },
   button: {
     width: "50%",

@@ -5,8 +5,9 @@ import { useGetProfileImageQuery, useGetProfileNameQuery } from "../../../../ser
 import { listeningMessages } from "../../../../firebase/firebaseListeners";
 import { filterByDate } from "../../../../utilities/filterByDate";
 import { setMessages } from "../../../../features/user/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 const MessageItem = ({ message }) => {
+  const { userName } = useSelector((state) => state.auth) 
   const { data: dataImage, isSuccess: isSuccessImage } = useGetProfileImageQuery(message.localId)
   const { data, isSuccess: isSuccessName, isLoading: isLoadingName} = useGetProfileNameQuery(message.localId)
   const dispatch = useDispatch()
@@ -29,7 +30,7 @@ const MessageItem = ({ message }) => {
         <Image style={styles.image} source={{ uri: dataImage.image }} />
       </View>
       <View style={styles.timeTextContainer}>
-        <Text style={styles.userText}>{!isLoadingName && data.userName}</Text>
+        <Text style={styles.userText}>{!isLoadingName && data.userName === userName? "Tú" : data.userName}</Text>
         <Text style={styles.text}>{message.text}</Text>
         <Text style={styles.timeText}>{message.createdAt}</Text>
       </View>
