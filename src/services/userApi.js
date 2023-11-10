@@ -67,6 +67,10 @@ export const userApi = createApi({
       })
     })
     ,
+    getComments: builder.query({
+      query: (postId) => `posts/${postId}/comments.json` 
+    })
+    ,
     getMessages: builder.query({
       query: () => `messages.json`
     }),

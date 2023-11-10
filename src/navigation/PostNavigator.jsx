@@ -12,7 +12,7 @@ export default function PostNavigator() {
       headerTitleAlign: "center",
     })}>
       <Stack.Screen name="Home" component={Home}/>
-      <Stack.Screen name="PostDetails" component={PostDetails}/>
+      <Stack.Screen name="PostDetails" component={PostDetails} options={{title: "Comments"}}/>
     </Stack.Navigator>
   )
 }

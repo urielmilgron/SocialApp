@@ -98,7 +98,9 @@ const PublicationItem = ({ navigation, publication }) => {
               )}
             </Text>
           </TouchableHighlight>
-          <TouchableHighlight style={[styles.button, styles.buttonDivisor]}>
+          <TouchableHighlight style={[styles.button, styles.buttonDivisor]} onPress={() => {
+            navigation.navigate("PostDetails", {post: publication, imageProfile:dataImage.image, userName: data.userName === userName? "Tú" : data.userName})
+          }}>
             <Text style={styles.buttonText}>Comentar</Text>
           </TouchableHighlight>
         </View>
