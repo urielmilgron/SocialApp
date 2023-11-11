@@ -1,20 +1,14 @@
-import {
-  View,
-  Text,
-  Image,
-  TouchableHighlight,
-  ActivityIndicator,
-  FlatList,
-} from "react-native";
+import { View, Text, Image, ActivityIndicator, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "./PostDetails.style";
 import CommentInput from "./components/CommentInput/CommentInput";
 import { useGetCommentsQuery } from "../../services/userApi";
-import { setComments, setPosts } from "../../features/user/userSlice";
+import { setComments } from "../../features/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { filterByDate } from "../../utilities/filterByDate";
 import { listeningComments } from "../../firebase/firebaseListeners";
 import CommentItem from "./components/CommentItem/CommentItem";
+
 const PostDetails = ({ route }) => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -27,6 +21,7 @@ const PostDetails = ({ route }) => {
     isSuccess,
   } = useGetCommentsQuery(postId);
   const data = useSelector((state) => state.user.comments);
+
   useEffect(() => {
     if (isLoading) {
       true;
@@ -46,24 +41,30 @@ const PostDetails = ({ route }) => {
     };
   }, [dispatch, dataComments]);
 
+  const headerComponent = () => {
+    return (
+      <>
+        <View style={styles.userNamePostContainer}>
+          <Image
+            style={styles.imageProfile}
+            source={{
+              uri: imageProfile,
+            }}
+          />
+          <Text style={styles.userNamePost}>{userName}</Text>
+          <Text style={styles.timePost}>{post.createdAt}</Text>
+        </View>
+        <View style={styles.postContainer}>
+          <View style={styles.contentPostContainer}>
+            <Text style={styles.contentPost}>{post.text}</Text>
+          </View>
+        </View>
+        <CommentInput post={post} />
+      </>
+    );
+  };
   return (
     <View style={styles.container}>
-      <View style={styles.userNamePostContainer}>
-        <Image
-          style={styles.imageProfile}
-          source={{
-            uri: imageProfile,
-          }}
-        />
-        <Text style={styles.userNamePost}>{userName}</Text>
-        <Text style={styles.timePost}>{post.createdAt}</Text>
-      </View>
-      <View style={styles.postContainer}>
-        <View style={styles.contentPostContainer}>
-          <Text style={styles.contentPost}>{post.text}</Text>
-        </View>
-      </View>
-      <CommentInput post={post} />
       <View>
         {isLoading ? (
           <ActivityIndicator
@@ -73,6 +74,7 @@ const PostDetails = ({ route }) => {
           />
         ) : (
           <FlatList
+            ListHeaderComponent={headerComponent}
             data={data}
             keyExtractor={(comment) => comment.id}
             renderItem={(comment) => <CommentItem comment={comment} />}
