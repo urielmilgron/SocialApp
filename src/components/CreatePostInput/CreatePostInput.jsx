@@ -23,7 +23,7 @@ const CreatePostInput = () => {
   const { data, isLoading, isSuccess } = useGetProfileNameQuery(localId);
   const [triggerPost] = usePostPublicationMutation();
   const postId = uuidv4();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   //Si presionamos cancel se borra el texto y se cierra el teclado
   const onPressCancel = () => {
     setValue(null);
@@ -31,10 +31,10 @@ const CreatePostInput = () => {
   };
 
   useEffect(() => {
-    if(isSuccess){
-      dispatch(setUserName(data.userName))
+    if (isSuccess) {
+      dispatch(setUserName(data.userName));
     }
-  },[data, isSuccess, isLoading])
+  }, [data, isSuccess, isLoading]);
 
   //En el onSubmit enviamos los datos del post
   const onSubmit = () => {
@@ -42,7 +42,10 @@ const CreatePostInput = () => {
       triggerPost({
         id: postId,
         text: value,
-        createdAt: new Date().toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires', hour12: false }),
+        createdAt: new Date().toLocaleString("es-AR", {
+          timeZone: "America/Argentina/Buenos_Aires",
+          hour12: false,
+        }),
         localId: localId,
       });
       onPressCancel();

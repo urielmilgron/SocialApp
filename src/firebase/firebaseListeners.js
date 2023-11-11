@@ -13,45 +13,42 @@ const firebaseConfig = {
   projectId: "reactnsocialapp",
   storageBucket: "reactnsocialapp.appspot.com",
   messagingSenderId: "403248860397",
-  appId: "1:403248860397:web:1bc449490168a2702110e4"
+  appId: "1:403248860397:web:1bc449490168a2702110e4",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 //Conecto a los posts
-const connectPostsDb = ref(db, 'posts');
-const connectMsgDb = ref(db,'messages');
+const connectPostsDb = ref(db, "posts");
+const connectMsgDb = ref(db, "messages");
 
 //Escucho los posts a traves de la función unsubscribe
 const listeningPosts = (callback) => {
-    const unsubscribe = onValue(connectPostsDb, (snapshot) => {
-      const data = snapshot.val();
-      // Manipula los datos según sea necesario
-      callback(data);
-    });
-  
-    return unsubscribe;
-  };
-  
-  //Escucha los mensajes
-  const listeningMessages = (callback) => {
-    const messages = onValue(connectMsgDb, (snapshot) => {
-      const dataMsg = snapshot.val();
-      
-      callback(dataMsg)
-    })
-    return messages
-  }
+  const unsubscribe = onValue(connectPostsDb, (snapshot) => {
+    const data = snapshot.val();
+    // Manipula los datos según sea necesario
+    callback(data);
+  });
+  return unsubscribe;
+};
 
-  const listeningComments = (callback, postId) => {
-    const connectCmntDb = ref(db, `posts/${postId}/comments`)
-    const comments = onValue(connectCmntDb, (snapshot) => {
-      const dataComments = snapshot.val()
-      callback(dataComments)
-    })
-    return comments
-  }
+//Escucha los mensajes
+const listeningMessages = (callback) => {
+  const messages = onValue(connectMsgDb, (snapshot) => {
+    const dataMsg = snapshot.val();
+    callback(dataMsg);
+  });
+  return messages;
+};
 
+const listeningComments = (callback, postId) => {
+  const connectCmntDb = ref(db, `posts/${postId}/comments`);
+  const comments = onValue(connectCmntDb, (snapshot) => {
+    const dataComments = snapshot.val();
+    callback(dataComments);
+  });
+  return comments;
+};
 
-  export { listeningPosts, listeningMessages, listeningComments };
+export { listeningPosts, listeningMessages, listeningComments };

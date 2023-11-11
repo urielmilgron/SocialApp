@@ -21,6 +21,8 @@ const CommentItem = ({ comment }) => {
     isLoading: isLoadingName,
     isSuccess: isSuccessName,
   } = useGetProfileNameQuery(localId);
+
+  
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>

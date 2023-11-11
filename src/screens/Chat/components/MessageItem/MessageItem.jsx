@@ -11,6 +11,8 @@ const MessageItem = ({ message }) => {
   const { data: dataImage, isSuccess: isSuccessImage } = useGetProfileImageQuery(message.localId)
   const { data, isSuccess: isSuccessName, isLoading: isLoadingName} = useGetProfileNameQuery(message.localId)
   const dispatch = useDispatch()
+
+
   useEffect(() => {
     const unsubscribe = listeningMessages((newMsg) => {
       if(newMsg){
@@ -21,8 +23,8 @@ const MessageItem = ({ message }) => {
     return () => {
       unsubscribe()
     }
-
   }, [isSuccessImage, dataImage, isSuccessName, data])
+  
 
   return (isSuccessImage && data.userName && data && (
     <View style={styles.container}>

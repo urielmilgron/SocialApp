@@ -1,4 +1,4 @@
-import { View, Text, FlatList, ActivityIndicator } from "react-native";
+import { View, FlatList, ActivityIndicator } from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "./Home.style";
 import PublicationItem from "./components/PublicationItem";
