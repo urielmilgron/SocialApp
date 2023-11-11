@@ -60,10 +60,10 @@ export const userApi = createApi({
       },
     }),
     postComment: builder.mutation({
-      query: ({postId, post}) => ({
-        url:`posts/${postId}/comments/${post.id}.json`,
-        method:'POST',
-        body: post
+      query: (post) => ({
+        url:`posts/${post.postId}/comments/${post.id}.json`,
+        method:'PUT',
+        body: {...post}
       })
     })
     ,
@@ -94,6 +94,7 @@ export const {
   useAddLikeMutation,
   useDeleteLikeMutation,
   usePostCommentMutation,
+  useGetCommentsQuery,
   useGetMessagesQuery,
   usePostMessageMutation
 } = userApi;

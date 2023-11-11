@@ -1,4 +1,4 @@
-export const filterByDate = (postsObject, type) => {
+export const filterByDate = (postsObject) => {
   if(postsObject){
     const postsFiltered = Object.values(postsObject);
 

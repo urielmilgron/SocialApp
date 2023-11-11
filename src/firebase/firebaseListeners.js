@@ -44,5 +44,14 @@ const listeningPosts = (callback) => {
     return messages
   }
 
+  const listeningComments = (callback, postId) => {
+    const connectCmntDb = ref(db, `posts/${postId}/comments`)
+    const comments = onValue(connectCmntDb, (snapshot) => {
+      const dataComments = snapshot.val()
+      callback(dataComments)
+    })
+    return comments
+  }
 
-  export { listeningPosts, listeningMessages };
+
+  export { listeningPosts, listeningMessages, listeningComments };

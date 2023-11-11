@@ -1,16 +1,43 @@
-import { View, Text, TextInput, TouchableHighlight } from 'react-native'
-import React, { useState } from 'react'
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableHighlight,
+  Keyboard,
+} from "react-native";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { usePostCommentMutation } from "../../../../services/userApi";
+import styles from "./CommentInput.style";
 import {v4 as uuidv4} from 'uuid'
-import { useDispatch, useSelector } from 'react-redux'
-import { usePostCommentMutation } from '../../../../services/userApi'
-import styles from './CommentInput.style'
 
-const CommentInput = () => {
-  const [value, setValue] = useState(null)
-  const { localId } = useSelector((state) => state.auth)
-  const postId = uuidv4()
-  const dispatch = useDispatch()
-  const [triggerPost] = usePostCommentMutation()
+
+const CommentInput = ({post}) => {
+  const [value, setValue] = useState(null);
+  const { localId } = useSelector((state) => state.auth);
+  const [triggerPost, result] = usePostCommentMutation();
+  const postId = post.id
+  const commentId = uuidv4()
+
+  const onSubmit = () => {
+    if (value) {
+      triggerPost({
+        id: commentId,
+          text: value,
+          createdAt: new Date().toLocaleString("es-AR", {
+            timeZone: "America/Argentina/Buenos_Aires",
+            hour12: false,
+          }),
+          localId: localId,
+          postId: postId
+      });
+    }
+    setValue(null);
+    Keyboard.dismiss();
+  };
+
+
+
 
   return (
     <View style={styles.container}>
@@ -26,12 +53,12 @@ const CommentInput = () => {
         />
       </View>
       <View style={styles.buttonsContainer}>
-        <TouchableHighlight style={styles.button} >
-          <Text>Publicar</Text>
+        <TouchableHighlight style={styles.button} onPress={() => onSubmit()}>
+          <Text style={styles.textButton}>Publicar</Text>
         </TouchableHighlight>
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default CommentInput
+export default CommentInput;

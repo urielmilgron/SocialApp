@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   updatedAt: Date.now().toLocaleString(),
   posts: [],
-  messages: []
+  messages: [],
+  comments: []
 };
 
 export const userSlice = createSlice({
@@ -17,11 +18,14 @@ export const userSlice = createSlice({
     setMessages: (state, action) => {
       state.messages = action.payload
       updatedAt = new Date().toLocaleString()
+    },
+    setComments: (state, action) => {
+      state.comments = action.payload
+      updatedAt = new Date().toLocaleString()
     }
-  
   },
 });
 
-export const { setPosts, setMessages } = userSlice.actions;
+export const { setPosts, setMessages, setComments } = userSlice.actions;
 
 export default userSlice.reducer;

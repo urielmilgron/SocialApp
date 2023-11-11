@@ -22,6 +22,7 @@ const PublicationItem = ({ navigation, publication }) => {
   const [deleteLike, resultDeletLike] = useDeleteLikeMutation();
   const dispatch = useDispatch();
   const [likes, setLikes] = useState(publication.likes || {});
+  const [comments, setComments] = useState(publication.comments || {})
   const { data: dataImage, isSuccess: isSuccessImage } =
     useGetProfileImageQuery(publication.localId);
 
@@ -51,11 +52,13 @@ const PublicationItem = ({ navigation, publication }) => {
 
   useEffect(() => {
     // Actualiza likes cuando hay cambios en la base de datos
+    setComments(publication.comments || {})
     setLikes(publication.likes || {});
-  }, [publication.likes]);
+  }, [publication.likes, publication.comments]);
 
   //Cuenta los likes
   const likesCount = Object.keys(likes).length;
+  const commentsCount = Object.keys(comments).length
 
   if (isError) {
     console.log(isError);
@@ -85,6 +88,11 @@ const PublicationItem = ({ navigation, publication }) => {
           <Pressable style={styles.likesTextButton}>
             <Text style={styles.likesText}>
               {likesCount ? `${likesCount} likes` : ""}
+            </Text>
+          </Pressable>
+          <Pressable style={styles.likesTextButton}>
+            <Text style={styles.likesText}>
+              {commentsCount ? `${commentsCount} comments` : ""}
             </Text>
           </Pressable>
         </View>
