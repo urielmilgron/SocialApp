@@ -51,13 +51,7 @@ const CreatePostInput = () => {
       onPressCancel();
     }
   };
-  return isLoading ? (
-    <ActivityIndicator
-      size="large"
-      color="#00ff00"
-      style={{ alignSelf: "center" }}
-    />
-  ) : (
+  return  (
     <View style={styles.container}>
       <View style={styles.textInputContainer}>
         <TextInput
@@ -67,7 +61,7 @@ const CreatePostInput = () => {
           onChangeText={(text) => setValue(text)}
           value={value}
           style={styles.textInput}
-          placeholder={`Hola ${userName}, que publicarás hoy?`}
+          placeholder={`Hola ${!isLoading? userName: "cargando..."}, que publicarás hoy?`}
         />
       </View>
       <View style={styles.buttonsContainer}>

@@ -4,6 +4,7 @@ import styles from "./Login.style";
 import { useLoginMutation } from "../../services/authApi";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../features/auth/authSlice";
+import { insertSession } from "../../db";
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -20,7 +21,12 @@ const Login = ({ navigation }) => {
 
   useEffect(() => {
     if (result.isSuccess) {
-      dispatch(setUser(result));
+      dispatch(setUser(result.data))
+      insertSession({
+        localId: result.data.localId,
+        email: result.data.email,
+        token: result.data.idToken
+      }).then(result => console.log(result)).catch(error => console.log(error))
     }
   }, [result]);
 

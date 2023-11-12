@@ -23,7 +23,7 @@ const Home = ({ navigation }) => {
   //los muestra y al cargarse la data de la db tambien
   useEffect(() => {
     if (isLoading) {
-      true;
+      setLoading(true);
     }
     const unsubscribe = listeningPosts((newPosts) => {
       //Filtro por fecha y despacho el array filtrado si hay posts

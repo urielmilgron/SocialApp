@@ -1,0 +1,251 @@
+00:39:42	[Tutor] Cristian Farias:	❗Recuerden que esta clase se valora, creo que es la ultima valoración
+00:40:30	Franco Sanchez:	Pásela por el chat
+00:40:31	Franco Sanchez:	Por favor
+00:40:34	Franco Sanchez:	Asi queda a todos
+00:40:48	[Moy] Profesor Coderhouse:	https://drive.google.com/drive/folders/1mq5tqVFdtnsxbPVJFwv0Ki0Xc5d43eOz
+00:42:52	[Tutor] Mathias Fernandez:	Estoy con internet muy inestable, por si se me corta, está yendo y viniendo
+00:44:07	[Moy] Profesor Coderhouse:	https://docs.expo.dev/versions/latest/sdk/sqlite/
+00:45:32	Gonzalo Suarez:	Aguante SQL
+00:45:37	Franco Ottobre:	Reacted to "Aguante SQL" with ❤️
+00:45:38	Evelin Romero:	Reacted to "Aguante SQL" with 💚
+00:45:43	Franco Ottobre:	Reacted to "Aguante SQL" with 💚
+00:45:45	[Moy] Profesor Coderhouse:	https://github.com/rt2zz/redux-persist
+00:45:54	[Moy] Profesor Coderhouse:	https://react-native-async-storage.github.io/async-storage/
+00:47:45	Gonzalo Suarez:	El zoom profe
+00:47:49	Andres Godoy:	profe le da zoomm
+00:49:02	[Moy] Profesor Coderhouse:	const mapPreviewUrl = `https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&key=${googleApi.mapStatic}`
+00:52:58	Franco Sanchez:	Lindo bardo jaja
+00:53:04	Gonzalo Suarez:	Amo SQL
+00:53:15	Federico Porta:	teníamos que hacer algún npm install??
+00:53:28	Katerina Cejas:	al fin sql algo que SÉ asjdajsdj
+00:53:28	Franco Sanchez:	Preferible el NoSql jaja
+00:53:32	Franco Sanchez:	Mas comodo
+00:53:35	Mauricio Maldonado:	Hola gente, buenas noches..se me hizo tarde por el trabajo perdón
+00:53:40	Pablo Figueroa:	resolve está mal escrito
+00:53:46	Martín Parolari:	npx expo install expo-sqlite
+00:54:17	Federico Porta:	Reacted to "npx expo install exp..." with 👍🏻
+00:54:19	Federico Porta:	gracias
+00:56:28	Franco Ottobre:	Reacted to "npx expo install exp..." with 👍🏻
+00:59:03	Martín Parolari:	puede mostrar el la db?
+01:00:14	Cristopher Macias:	puedes mostrar el index de la db porfas
+01:00:57	[Moy] Profesor Coderhouse:	'CREATE TABLE IF NOT EXISTS sessions (localId TEXT PRIMARY KEY NOT NULL , email TEXT NOT NULL, token TEXT NOT NULL)',
+01:01:00	Claudia Serquis:	Dónde se estaría creando esa DB?
+01:01:08	Ignacio Kruchowski:	internamente
+01:01:18	Claudia Serquis:	Ahh oki
+01:01:32	Franco Ottobre:	No, todo bien
+01:01:33	Cristopher Macias:	todo bien
+01:01:34	Evelin Romero:	no
+01:04:29	Martín Parolari:	profe, la tabla creada arriba es sessions
+01:04:31	Cristopher Macias:	es "sessions" no "sesión"
+01:05:09	Martín Parolari:	,
+01:09:44	Ignacio Kruchowski:	profe
+01:09:49	Ignacio Kruchowski:	vaya al func de result y
+01:10:06	Ignacio Kruchowski:	me parece que dejó una "," en el parámetro
+01:10:33	Ignacio Kruchowski:	ahí
+01:10:34	Ignacio Kruchowski:	línea 27
+01:10:42	Ignacio Kruchowski:	ah es así, perfect
+01:12:52	Evelin Romero:	todo ok
+01:17:07	Ignacio Calace:	En app js?
+01:17:21	Ignacio Calace:	a
+01:19:53	Ignacio Calace:	Hay que mandar el localId, no?
+01:20:02	[Tutor] Cristian Farias:	Replying to "Hay que mandar el lo..."
+
+asi es
+01:20:10	Ignacio Calace:	Reacted to "asi es" with 👌🏻
+01:22:50	Pablo Figueroa:	Que va a pasar cuando se agregue un segundo usuario? No pisaría la row?
+01:23:27	Jorge Gabriel Urquiza:	tipo Netflix?
+01:23:31	Cristopher Macias:	asi es la sintaxis para escribir una función asíncrona? con el { ; (async)} ?
+01:23:38	Ignacio Kruchowski:	entiendo que pregunta si los datos se sobrescriben
+01:23:40	Pablo Figueroa:	Claro, para que queden varios usuarios y uno elija cual usar
+01:24:17	Katerina Cejas:	pregunta, por que hace el dispatch ahí si lo estaba haciendo en login? o ahí era otro?
+01:24:25	Jorge Gabriel Urquiza:	claro se inicia con un solo email y después tiene distintos perfiles
+01:25:57	[Tutor] Cristian Farias:	Replying to "pregunta, por que ha..."
+
+por que la idea es que al abrir tu app, el SQLite, le mande a redux la sesión iniciada,para que pase de una a la pantalla home
+01:26:01	Gonzalo Suarez:	Probá si funca
+01:26:36	Martín Parolari:	Profe, puede ser que en ts el manejo del error tiene que ser de otra manera? porque me tira error prácticamente con cualquier cosa que le haga jajaja
+01:26:59	Katerina Cejas:	barbaro gracias!
+01:27:03	Katerina Cejas:	Replying to "pregunta, por que ha..."
+
+tenkiu
+01:27:04	Claudia Serquis:	Se puede o recomienda guardar en el teléfono más tablas con información personalizada del usuario de la app? o conviene guardarla y usarla desde Firebase?
+01:27:32	Franco Ottobre:	Buena aclaración
+01:27:53	Evelin Romero:	ok
+01:28:07	Javier Garcia:	profe tengo una duda que acabo de recordar que no se si termino arreglando el total del cart
+01:28:17	Gonzalo Suarez:	El problema es: Al añadir un articulo al carrito no lo agrega y sale ese error. En el carrito, no sale el total. Después al iniciar la app sale un error
+01:28:25	Gonzalo Suarez:	Replying to "El problema es: Al a..."
+
+Ajudame con esto profe
+01:28:36	Gonzalo Suarez:	Replying to "El problema es: Al a..."
+
+Que no tengo idea que es ese error
+01:28:54	Martín Parolari:	Argument of type '(_: SQLTransaction, error: SQLError) => void' is not assignable to parameter of type 'SQLStatementErrorCallback'.  Type 'void' is not assignable to type 'boolean'.
+01:30:03	Pablo Figueroa:	Desde que puse firebase no puedo llegar a la pantalla de productos xq me manda la data cómo null
+01:30:16	Lucas Abrigo:	los artículos favoritos donde se guardarían ?
+01:31:01	Claudia Serquis:	Porque quiero hacer una app que recuerde al usuario hacer contactos con sus amigos o sea es información personal aunque quizas sean muchos datos
+01:32:06	Gabriel Ledesma:	profe, yo m hice una navegación de perfil, y quiero acceder desde la navegación del botton, la de abajo asi y no me deja, me da error, que no encuentra la navegación Profile
+01:32:31	[Moy] Profesor Coderhouse:	return (state = {
+          ...state,
+          items: itemsUpdated,
+          total: 10,
+          updatedAt: new Date().toLocaleString(),
+        })
+01:33:03	Gonzalo Suarez:	Del error de antes
+01:33:04	Gonzalo Suarez:	si
+01:33:26	Gonzalo Suarez:	Profe, comparta asi veo
+01:33:27	Gonzalo Suarez:	sjjs
+01:33:41	Evelin Romero:	Profe tiene otras comisiones?
+01:33:54	Evelin Romero:	pienso hacer de nuevo esto
+01:34:40	Javier Garcia:	donde dijo que habia que poner ese return? en cual archivo
+01:35:20	Claudia Serquis:	sip
+01:35:44	Javier Garcia:	ordenes tampoco la terminamos profe
+01:36:12	Gabriel Ledesma:	okaaa
+01:36:18	Gonzalo Suarez:	Ayudame con el repo porfaa
+01:36:33	Evelin Romero:	ok..
+01:36:51	Evelin Romero:	dale si, gracias
+01:36:58	Gabriel Ledesma:	https://github.com/Ledesma96/TrankingAppMobile
+01:37:01	Gabriel Ledesma:	tiene usuario
+01:37:10	Gabriel Ledesma:	Gabriel.m.ledesma96@gmail.com
+01:37:13	Gabriel Ledesma:	1234
+01:37:20	Gonzalo Suarez:	Comparta
+01:37:23	Gonzalo Suarez:	Ok
+01:37:33	Gonzalo Suarez:	Ya me tiene la cabeza quemada ese error
+01:37:40	Gonzalo Suarez:	Estuve a punto de perder la batalla por ese maldito error
+01:38:05	Gonzalo Suarez:	Dale, por elchat de la plataforma
+01:38:17	Gonzalo Suarez:	Dale, si lo llegas a solucionar me avisas
+01:38:30	Gonzalo Suarez:	Y me explicas que corno es
+01:38:31	Gonzalo Suarez:	JSJJS
+01:38:37	Joaquin Moises Rodriguez:	profe el desafio que se entrega este miércoles, orders no entra no?
+01:38:49	Javier Garcia:	el searchinput lo comentamos porque daba error tambien
+01:38:50	Gabriel Ledesma:	ese mismo jaja
+01:38:56	Javier Garcia:	😅
+01:39:06	[Tutor] Cristian Farias:	Replying to "profe el desafio que..."
+
+el desafio que está pendiente creo que es solo el uso de cámara o location, o ambas
+01:39:46	Joaquin Moises Rodriguez:	Es uso de ambas? location y cámara?
+01:40:08	[Tutor] Cristian Farias:	Replying to "Es uso de ambas? loc..."
+
+es de cámara, o de location, o si quieren de ambas
+01:40:25	Joaquin Moises Rodriguez:	Replying to "Es uso de ambas? loc..."
+
+ahh gracias!
+01:41:22	[Tutor] Cristian Farias:	le falta pasar el localId en la función de fetchSession
+01:45:05	[Tutor] Cristian Farias:	llega el localId desde auth?
+01:51:03	Ignacio Kruchowski:	el tema es que localid termina siendo null
+01:51:06	Ignacio Kruchowski:	es como un never
+01:52:03	Ignacio Kruchowski:	no podrías hacer por ej: lastSession: [...] y traer directamente esa?
+01:52:24	Cristopher Macias:	y si hacemos otra app desde cero mejor?
+01:52:35	Cristopher Macias:	xd
+01:52:51	Evelin Romero:	Reacted to "y si hacemos otra ap..." with 😂
+01:52:58	Ignacio Kruchowski:	add 😂
+01:53:12	Pablo Figueroa:	Mepa que el problema es que dijo que era fácil antes de empezar la clase
+01:53:18	Evelin Romero:	Reacted to "Mepa que el problema..." with 😂
+01:53:19	Franco Ottobre:	Reacted to "Mepa que el problema..." with 😂
+01:53:19	Pablo Figueroa:	Ahí estuvo el error
+01:53:24	Ignacio Kruchowski:	add 😂
+01:54:09	Federico Martín Stempler:	Reacted to "Mepa que el problema..." with 😂
+01:54:14	Federico Martín Stempler:	Reacted to "Mepa que el problema..." with 👏
+01:55:00	[Tutor] Cristian Farias:	en el register, tendríamos que agregar ese data cuando enviamos result, no?
+01:55:31	Katherine Cantillo:	XD
+01:55:44	[Tutor] Cristian Farias:	o sea, en el dispatch(singUp(result.data))
+01:57:03	Pablo Figueroa:	Si le cambio la foto, queda actualizada tmb?
+01:57:05	Gonzalo Suarez:	Pase el codigo
+01:57:06	Gonzalo Suarez:	JSJS
+01:57:09	Javier Garcia:	pudiese volver a mostrar como lo arreglo JAJAJA
+01:57:17	Javier Garcia:	y como hacemos para cerrar session ahora?
+01:57:24	[Tutor] Cristian Farias:	tranquilos que va a hacer el push al finalizar la clase jaja
+01:57:32	Javier Ballon:	profe y se le puede poner un tiempo de vida a la sesión?
+01:57:43	Ignacio Kruchowski:	eso es más sencillo, es delete todo jaja
+01:57:56	Pablo Figueroa:	Perfecto! Gracias!
+01:58:46	katya :	Quede atrapada en el trabajo, apenas pude unirme ☹️☹️
+01:58:54	Ignacio Kruchowski:	tengo entendido que eso está seteado con el localid, que provee firebase
+01:59:49	Cristopher Macias:	yo recargo y me sigue dejando en el login jaja
+02:01:15	Javier Ballon:	no es logout?
+02:01:53	Pablo Figueroa:	log-out
+02:01:54	Ignacio Kruchowski:	log-out
+02:01:58	Ignacio Kruchowski:	fuaa Pablo
+02:02:00	Ignacio Kruchowski:	empate
+02:02:01	Ignacio Kruchowski:	jajaj
+02:02:13	[Tutor] Cristian Farias:	Replying to "log-out"
+
+log-out o troll
+02:02:20	Pablo Figueroa:	Nada de empate
+02:02:22	Pablo Figueroa:	Jajajaja
+02:02:26	Ignacio Kruchowski:	jajajaj
+02:02:46	[Tutor] Cristian Farias:	Replying to "Nada de empate"
+
+mid, top, mid, gane mid
+02:04:26	Luis Leon:	Me tengo que retirar, luego terminaré de ver la clase. Feliz noche
+02:04:59	Evelin Romero:	Reacted to "Me tengo que retirar..." with 💚
+02:06:24	[Tutor] Cristian Farias:	le falta ejecutar el clearUser()
+02:06:49	[Tutor] Cristian Farias:	👍
+02:07:09	Franco Ottobre:	Reacted to "le falta ejecutar el..." with ❤️
+02:07:35	Ignacio Kruchowski:	*cerrar sesión* app: ¿A dónde vas?
+02:07:44	Pablo Figueroa:	Reacted to "*cerrar sesión* app:..." with 🤣
+02:13:16	Katherine Cantillo:	👏
+02:13:19	Franco Sanchez:	Me tengo que ir, suerte
+02:13:32	Cristopher Macias:	puedes poner de nuevo el index de la db porfas
+02:13:37	[Tutor] Cristian Farias:	❗Gente, recuerden que esta clase se valora
+02:13:56	Lucas Abrigo:	como podría resolverse el darle dos veces para que tome el login ?
+02:13:59	Evelin Romero:	parece que todo bien
+02:14:13	Franco Ottobre:	Bien
+02:14:15	Cristopher Macias:	como que´do el main navigator?
+02:15:12	Lucas Abrigo:	perfecto profe
+02:15:13	Katherine Cantillo:	Genial
+02:15:16	Lucas Abrigo:	gracias
+02:15:18	Gonzalo Suarez:	Perfect
+02:15:21	Javier Garcia:	perfecto
+02:15:22	Gonzalo Suarez:	Suba el repo profe
+02:15:29	Javier Garcia:	intente poner el total pero igual no suma
+02:15:33	Katherine Cantillo:	Si
+02:15:44	Javier Garcia:	puede probar usted?
+02:16:38	Javier Garcia:	y porfa pasarelas de pago y eso para el after o despues de la clase del miercoles
+02:16:45	Katherine Cantillo:	Entendido
+02:17:09	Cristopher Macias:	puedes poner el main navigator porfas
+02:17:46	Javier Garcia:	tengo eso mismo, a usted si le esta funcionando? corri su app y tampoco me sumo
+02:17:52	Joaquin Moises Rodriguez:	Yo me voy yendo, me tengo que retirar profe, buenas noches a todos un abrazo!
+02:18:00	Ignacio Kruchowski:	en initial state tenes a total como null?
+02:18:05	Gonzalo Suarez:	Suba el repo prof
+02:18:23	Cristopher Macias:	nah
+02:18:26	Evelin Romero:	no.. jaja
+02:18:30	Javier Garcia:	yo puedo mostrar el mio si quieren
+02:18:33	Katherine Cantillo:	Sonaban grillos jajaja
+02:18:47	Lucas Abrigo:	ruido de mate
+02:18:53	Federico Martín Stempler:	Yo termino de arreglarlo y lo muestro
+02:19:14	Evelin Romero:	no creo que lo termine ...
+02:19:24	Gonzalo Suarez:	Gracias
+02:19:25	Pablo Figueroa:	Ni de casualidad lo muestro, siempre hay uno que humilla jajaja
+02:20:01	Evelin Romero:	aah ok
+02:20:03	[Tutor] Cristian Farias:	Replying to "no creo que lo termi..."
+
+yo lo mostraría, las pelotas de tu inicio son geniales
+02:20:12	Evelin Romero:	Replying to "no creo que lo termi..."
+
+Circulos
+02:20:21	Katherine Cantillo:	Reacted to "Circulos" with 😂
+02:20:25	Lucas Abrigo:	Reacted to "yo lo mostraría, las..." with 😂
+02:20:38	Ignacio Kruchowski:	add 😂
+02:20:47	Pablo Figueroa:	Replying to "no creo que lo termi..."
+
+Que pelotas el proyecto!
+02:21:37	Evelin Romero:	Reacted to "Que pelotas el proye..." with 🥲
+02:22:07	Gonzalo Suarez:	Profe, no se olvide de ayudarme con el error que me sale en mi repo porfi
+02:22:15	Cristopher Macias:	a ver que tanto puedo avanzar mañana a ver si muestro algo jaja
+02:23:05	[Tutor] Cristian Farias:	Buenos gente, los voy dejando hasta el miércoles, nos vemos y muy buenas noches
+02:23:06	Gabriel Ledesma:	si tengo tiempo le mando mas mano a la estética asi lo muestro
+02:23:08	Katherine Cantillo:	En las mismas
+02:23:13	Gabriel Ledesma:	esta muy simplon ahora mismo
+02:23:18	Katherine Cantillo:	Mepa que no se llega jajaja
+02:23:27	Javier Garcia:	el lunes tambien podria ser
+02:23:36	Gabriel Ledesma:	yo
+02:23:40	Javier Garcia:	solo que si quisiera saber eso😅
+02:23:55	Franco Ottobre:	Nos vemos , buenas noches a todos
+02:24:00	Gonzalo Suarez:	Chau profe. Gracias. Nos vemos!
+02:24:13	Gabriel Ledesma:	el problema del perfil, el de la navecacion lo tenia yo
+02:24:21	Katherine Cantillo:	Buenas noches, gente. Gracias por la clase, profe!
+02:24:24	Gabriel Ledesma:	dale profeee, graciias
+02:24:29	Pablo Figueroa:	Nos vemos gente! Buenas noches a todos
+02:24:34	Federico Martín Stempler:	Buenas noches! Nos vemos el miércoles
+02:24:58	Gabriel Ledesma:	nos vemos profe, hasta el miercoles
+02:25:19	Claudia Serquis:	Gracias Moy !
+02:25:24	Evelin Romero:	yo tengo un error en mi app... categorySelected undefined me dice

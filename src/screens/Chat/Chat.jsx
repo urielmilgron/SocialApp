@@ -1,7 +1,6 @@
-import { View, ActivityIndicator, FlatList } from "react-native";
+import { View, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "./Chat.style";
-import data from "../../data/messages";
 import MessageInput from './components/MessageInput/MessageInput'
 import MessageItem from "./components/MessageItem/MessageItem";
 import { useDispatch, useSelector } from "react-redux";

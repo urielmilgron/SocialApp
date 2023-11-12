@@ -5,6 +5,7 @@ import * as ImagePicker from "expo-image-picker";
 import { clearUser, setProfileImage } from "../../features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { usePostProfileImageMutation } from "../../services/userApi";
+import { deleteSessions } from "../../db";
 
 const Profile = () => {
   const image = useSelector((state) => state.auth.imageProfile);
@@ -58,6 +59,7 @@ const Profile = () => {
 
   const sesionOff = () => {
     dispatch(clearUser());
+    deleteSessions()
   };
   return (
     <View style={styles.container}>
