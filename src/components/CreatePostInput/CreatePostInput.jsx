@@ -4,7 +4,6 @@ import {
   TouchableHighlight,
   Text,
   Keyboard,
-  ActivityIndicator,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "./CreatePostInput.style";
