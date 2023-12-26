@@ -14,7 +14,8 @@ export default styles = StyleSheet.create({
         textAlign:'left',
         textAlignVertical:'top',
         padding:5,
-        borderRightWidth:1
+        borderRightWidth:1,
+        height:'100%'
     },
     buttonsContainer:{
         width:'20%',

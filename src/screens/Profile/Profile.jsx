@@ -49,6 +49,7 @@ const Profile = () => {
     triggerSaveProfileImage({ image, localId });
     if (result.isSuccess) {
       setimageState("La foto fue guardada con exito!");
+      setProfileImage(result.data.image)
     } else if (result.error || result.isUninitialized) {
       setimageState("Intentelo de nuevo");
     }

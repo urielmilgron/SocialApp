@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Pressable } from "react-native";
+import { View, Text, TextInput, Pressable, KeyboardAvoidingView } from "react-native";
 import React, { useEffect, useState } from "react";
 import styles from "./Login.style";
 import { useLoginMutation } from "../../services/authApi";
@@ -31,7 +31,10 @@ const Login = ({ navigation }) => {
   }, [result]);
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
       <View style={styles.loginContainer}>
         <Text>Login to start</Text>
         <TextInput
@@ -49,6 +52,8 @@ const Login = ({ navigation }) => {
         <Pressable style={styles.button} onPress={onSubmit}>
           <Text>Login</Text>
         </Pressable>
+        <View style={styles.containerSignup}>
+
         <Text>Not have an account?</Text>
         <Pressable
           style={[styles.button, styles.buttonSign]}
@@ -56,8 +61,9 @@ const Login = ({ navigation }) => {
         >
           <Text>Sign up</Text>
         </Pressable>
+        </View>
       </View>
-    </View>
+      </KeyboardAvoidingView>
   );
 };
 

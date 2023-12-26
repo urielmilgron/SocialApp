@@ -11,10 +11,10 @@ export default styles = StyleSheet.create({
         width:'100%',
         height:'75%',
         borderWidth:1,
-        borderRadius:3
+        borderRadius:3,
     },
     messageInputContainer:{
-        height:'20%',
+        height:'18%',
         borderWidth:1,
         borderRadius:3
     },

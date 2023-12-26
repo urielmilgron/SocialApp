@@ -10,7 +10,7 @@ This product is being built
 $ git clone https://github.com/urielmilgron/SocialApp.git
 $ cd SocialApp
 $ npm install
-$ npx expo start --android
+$ npx expo start or npx expo start --android
 ```
 ## Routes
 
@@ -28,3 +28,5 @@ $ /messages/{messageId}
 - [Expo](https://expo.dev/)
 - [ReduxJs Toolkit](https://redux-toolkit.js.org/)
 - [Firebase](https://firebase.com)
+
+![Imagen del proyecto](https://raw.githubusercontent.com/urielmilgron/SocialApp/master/src/assets/images/proyect_socialapp.jpg)

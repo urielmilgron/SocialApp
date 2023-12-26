@@ -41,22 +41,26 @@ const Home = ({ navigation }) => {
     };
   }, [dispatch, firebasePosts]);
 
-  return loading ? (
-    <ActivityIndicator
-      size="large"
-      color="#00ff00"
-      style={{ alignSelf: "center" }}
-    />
-  ) : (
+  return (
     <View style={styles.container}>
-      <FlatList
-        ListHeaderComponent={headerFlatList}
-        data={posts}
-        renderItem={({ item }) => (
-          <PublicationItem navigation={navigation} publication={item} />
-        )}
-        keyExtractor={(item) => item.id.toString()}
-      />
+      {!posts || posts.length === 0 ? (
+        <CreatePostInput />
+      ) : loading ? (
+        <ActivityIndicator
+          size="large"
+          color="#00ff00"
+          style={{ alignSelf: "center" }}
+        />
+      ) : (
+        <FlatList
+          data={posts}
+          ListHeaderComponent={headerFlatList}
+          renderItem={({ item }) => (
+            <PublicationItem navigation={navigation} publication={item} />
+          )}
+          keyExtractor={(item) => item.id.toString()}
+        />
+      )}
     </View>
   );
 };
